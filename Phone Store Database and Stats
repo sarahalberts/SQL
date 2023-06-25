@@ -8,16 +8,16 @@ storage INTEGER,
 rating INTEGER);
 
 INSERT INTO phone_store VALUES 
-(1, "iPhone 14 Pro", 999.99, 128, 4.4),
-(2, "iPhone 14", 799.99, 128, 4.4),
-(3, "iPhone 14 Pro Max", 1099.99, 128, 4.5),
-(4, "iPhone 14 Plus", 899.99, 128, 4.5),
-(5, "Galaxy S23 Ultra", 1199.99, 256, 4.8 ),
-(6, "Galaxy S23", 799.99, 128, 4.4),
-(7, "Pixel 7a", 549.99, 128, 3.9),
-(8, "Pixel 7", 699.99, 128, 4.1),
-(9, "Galaxy Z Fold4", 1799.99, 256, 4.6),
-(10, "DuraSport 5G UW", 579.99, 64, 2.5);
+(1, 'iPhone 14 Pro', 999.99, 128, 4.4),
+(2, 'iPhone 14', 799.99, 128, 4.4),
+(3, 'iPhone 14 Pro Max', 1099.99, 128, 4.5),
+(4, 'iPhone 14 Plus', 899.99, 128, 4.5),
+(5, 'Galaxy S23 Ultra', 1199.99, 256, 4.8 ),
+(6, 'Galaxy S23', 799.99, 128, 4.4),
+(7, 'Pixel 7a;, 549.99, 128, 3.9),
+(8, 'Pixel 7', 699.99, 128, 4.1),
+(9, 'Galaxy Z Fold4', 1799.99, 256, 4.6),
+(10, 'DuraSport 5G UW', 579.99, 64, 2.5);
 
 /* display the database ordered by price. */
 
@@ -43,5 +43,5 @@ WHERE price <= 800;
 
 /*what is the average price of the items? */
 
-SELECT AVG(price) "average price" 
+SELECT AVG(price) 'average price' 
 FROM phone_store;
