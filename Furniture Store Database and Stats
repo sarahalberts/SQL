@@ -1,0 +1,35 @@
+/* Create a furniture store database */ 
+
+CREATE TABLE furniture_store (
+id INTEGER PRIMARY KEY,
+name TEXT,
+price INTEGER,
+inventory_amount INTEGER,
+sold INTEGER);
+
+INSERT INTO furniture_store VALUES
+(1, "chair", 99.99, 5, 6), 
+(2, "table", 449.99, 10, 3),
+(3, "coat rack", 62.99, 10, 2),
+(5, "couch", 600.75, 12, 4),
+(6, "recliner", 249.99, 10, 6),
+(7, "bed frame", 499.99, 4, 7),
+(8, "dresser", 270.75, 5, 15),
+(9, "rug", 50.99, 40, 70),
+(10, "footstool", 33.99, 10, 8),
+(11, "high chair", 65.99, 5, 9);
+
+/* display the database ordered by price. */
+
+SELECT * FROM furniture_store
+ORDER BY price desc;
+
+/* what items are $250 or less? */
+
+SELECT * FROM furniture_store 
+WHERE price <= 250;
+
+/*what is the average price of the items? */
+
+SELECT AVG(price) "average price" 
+FROM furniture_store;
