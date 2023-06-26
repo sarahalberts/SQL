@@ -2,9 +2,6 @@
 
 -- Source: https://www.kaggle.com/nasa/astronaut-yearbook
 
-/* Source:
-  https://www.kaggle.com/nasa/astronaut-yearbook
-*/
 CREATE TABLE astronauts(
    Name                TEXT PRIMARY KEY,
    Year                INTEGER,
@@ -199,25 +196,38 @@ INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,A
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('Rick D. Husband',1995,15,'Deceased','7/12/1957','Amarillo, TX','Male','Texas Tech University; California State University','Mechanical Engineering','Mechanical Engineering','Colonel','US Air Force',2,617,0,0,'STS-96 (Discovery), STS-107 (Columbia)','2/1/2003','STS-107 (Columbia)');
 INSERT INTO astronauts(Name,Year,GroupNum,Status,Birth_Date,Birth_Place,Gender,Alma_Mater,Undergraduate_Major,Graduate_Major,Military_Rank,Military_Branch,Space_Flights,Space_Flight_hr,Space_Walks,Space_Walks_hr,Missions,Death_Date,Death_Mission) VALUES ('James B. Irwin',1966,5,'Deceased','3/17/1930','Pittsburgh, PA','Male','US Naval Academy; University of Michigan','Naval Sciences','Aeronautical Engineering','Colonel','US Air Force (Retired)',1,295,3,20,'Apollo 15','8/8/1991',NULL);
 
-SELECT * FROM astronauts;
-
 -- What are average, max, and min space walks?
 
 SELECT AVG(Space_Walks) 'Average Space Walks'
 FROM astronauts;
 
-SELECT MIN(Space_Walks) AS 'Min_Space_Walks'
+SELECT MIN(Space_Walks) AS 'Min_Space_Walks',
   MAX(Space_Walks) AS 'Max_Space_Walks'
 FROM astronauts;
 
--- What are the numbers of astronauts by gender?
+-- What are the names of all the female astronauts?
 
-SELECT gender,
-COUNT(*) AS 'Astronauts_by_Gender'
-FROM astronauts;
+SELECT Name, Gender FROM astronauts
+WHERE Gender = 'Female';
 
--- What about those numbers per category in the data (using HAVING)?
+-- List the names and undergraduate + graduate majors of all the astronauts:
 
--- What ways are there to group the data values that don’t exist yet (using CASE)?
+SELECT Name, Undergraduate_Major, Graduate_Major
+FROM astronauts
+ORDER BY Undergraduate_Major ASC;
 
--- What interesting ways are there to filter the data (using AND/OR)?
+-- How many astronauts do not have a Graduate Major and are currently active?
+
+SELECT Name, Status, Graduate_Major
+FROM astronauts 
+WHERE Graduate_Major IS NULL
+AND Status = 'Retired'
+ORDER BY Name DESC;
+
+-- The following SQL statement lists the number of astronauts in each Undergraduate major. Only include undergraduate majors with at least three astronauts:
+
+SELECT COUNT(Undergraduate_Major), Undergraduate_Major
+FROM astronauts
+GROUP BY Undergraduate_Major
+HAVING COUNT(Undergraduate_Major) >= 3;
+
