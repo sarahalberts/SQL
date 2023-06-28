@@ -1,0 +1,46 @@
+/* Make a table with some small set of “famous people,” then make more tables about things they do and join those to create nice human readable lists. Contains at least two tables with at 
+least 15 rows total. One of the tables contains a column that relates to the primary key of another table. Has at least one query that does a JOIN. */
+    
+CREATE TABLE musicals (
+    id INTEGER PRIMARY KEY, 
+    title TEXT,
+    composer_id INTEGER,
+    year INTEGER);
+    
+INSERT INTO musicals VALUES (1, 'Willy Wonka & the Chocolate Factory', 2, 1971);
+INSERT INTO musicals VALUES (2, 'Fiddler on the Roof', 1, 1964);
+INSERT INTO musicals VALUES (3, 'Doctor Dolittle', 2, 1998);
+INSERT INTO musicals VALUES (4, 'The Producers', 3, 2001);
+INSERT INTO musicals VALUES (5, 'Singin in the Rain', 4, 1983);
+INSERT INTO musicals VALUES (6, 'Young Frankenstein', 3, 2007);
+INSERT INTO musicals VALUES (7, 'Dont Stop the Carnival', 5, 1997);
+INSERT INTO musicals VALUES (8, 'Escape to Margaritaville', 5, 2017);
+INSERT INTO musicals VALUES (9, 'Cats', 6, 1981);
+INSERT INTO musicals VALUES (10, 'Phantom of the Opera', 6, 1986);
+INSERT INTO musicals VALUES (11, 'Jesus Christ Superstar', 6, 1971);
+INSERT INTO musicals VALUES (12, 'Sunset Boulevard', 6, 1992);
+INSERT INTO musicals VALUES (13, 'My Fair Lady', 7, 1956);
+INSERT INTO musicals VALUES (14, 'Camelot', 7, 1960);
+INSERT INTO musicals VALUES (15, 'The Little Prince', 7, 1974);
+
+CREATE TABLE composers (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    birth_place TEXT);
+
+INSERT INTO composers VALUES (1, 'Jerry Bock', 'Connecticut');
+INSERT INTO composers VALUES (2, 'Leslie Bricusse', 'England');
+INSERT INTO composers VALUES (3, 'Mel Brooks', 'New York');
+INSERT INTO composers VALUES (4, 'Nacio Herb Brown', 'New Mexico');
+INSERT INTO composers VALUES (5, 'Jimmy Buffet', 'Mississippi');
+INSERT INTO composers VALUES (6, 'Andrew Lloyd Webber', 'England');
+INSERT INTO composers VALUES (7, 'Frederick Loewe', 'Germany');
+
+-- What songs did each composer write? 
+
+SELECT c.name, m.title as musical_title
+    FROM composers c
+    JOIN musicals m
+    ON c.id = m.composer_id
+    ORDER BY c.name;
+    
