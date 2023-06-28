@@ -36,11 +36,11 @@ INSERT INTO composers VALUES (5, 'Jimmy Buffet', 'Mississippi');
 INSERT INTO composers VALUES (6, 'Andrew Lloyd Webber', 'England');
 INSERT INTO composers VALUES (7, 'Frederick Loewe', 'Germany');
 
--- What songs did each composer write? 
-
-SELECT c.name, m.title as musical_title
+-- What musicals did each composer write? Include the year the musical was produced.  
+ 
+SELECT c.name AS 'composer name', m.title as 'musical title', year
     FROM composers c
     JOIN musicals m
     ON c.id = m.composer_id
-    ORDER BY c.name;
+    ORDER BY year DESC;
     
