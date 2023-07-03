@@ -1,4 +1,4 @@
-/* Make a table with some small set of “famous people,” then make more tables about things they do and join those to create nice human readable lists. Contains at least two tables with at 
+/* Make a table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists. Contains at least two tables with at 
 least 15 rows total. One of the tables contains a column that relates to the primary key of another table. Has at least one query that does a JOIN. */
     
 CREATE TABLE musicals (
@@ -23,6 +23,7 @@ INSERT INTO musicals VALUES (13, 'My Fair Lady', 7, 1956);
 INSERT INTO musicals VALUES (14, 'Camelot', 7, 1960);
 INSERT INTO musicals VALUES (15, 'The Little Prince', 7, 1974);
 
+
 CREATE TABLE composers (
     id INTEGER PRIMARY KEY,
     name TEXT,
@@ -35,12 +36,22 @@ INSERT INTO composers VALUES (4, 'Nacio Herb Brown', 'New Mexico');
 INSERT INTO composers VALUES (5, 'Jimmy Buffet', 'Mississippi');
 INSERT INTO composers VALUES (6, 'Andrew Lloyd Webber', 'England');
 INSERT INTO composers VALUES (7, 'Frederick Loewe', 'Germany');
+INSERT INTO composers VALUES (8, 'Johannes Brahms', 'Germany');
 
--- What musicals did each composer write? Include the year the musical was produced.  
- 
+-- What musicals did each composer write? 
+    
 SELECT c.name AS 'composer name', m.title as 'musical title', year
     FROM composers c
     JOIN musicals m
     ON c.id = m.composer_id
     ORDER BY year DESC;
+    
+-- List every composer and the names of the musicals they wrote
+
+SELECT composers.name, musicals.title
+    FROM composers
+    LEFT JOIN musicals
+    ON composers.id = musicals.composer_id
+    ORDER BY name;
+    
     
