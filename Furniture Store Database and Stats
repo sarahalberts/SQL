@@ -8,16 +8,16 @@ inventory_amount INTEGER,
 sold INTEGER);
 
 INSERT INTO furniture_store VALUES
-(1, "chair", 99.99, 5, 6), 
-(2, "table", 449.99, 10, 3),
-(3, "coat rack", 62.99, 10, 2),
-(5, "couch", 600.75, 12, 4),
-(6, "recliner", 249.99, 10, 6),
-(7, "bed frame", 499.99, 4, 7),
-(8, "dresser", 270.75, 5, 15),
-(9, "rug", 50.99, 40, 70),
-(10, "footstool", 33.99, 10, 8),
-(11, "high chair", 65.99, 5, 9);
+(1, "chair", 99, 5, 6), 
+(2, "table", 449, 10, 3),
+(3, "coat rack", 62, 10, 2),
+(5, "couch", 600, 12, 4),
+(6, "recliner", 249, 10, 6),
+(7, "bed frame", 499, 4, 7),
+(8, "dresser", 270, 5, 15),
+(9, "rug", 50, 40, 70),
+(10, "footstool", 33, 10, 8),
+(11, "high chair", 65, 5, 9);
 
 /* display the database ordered by price. */
 
